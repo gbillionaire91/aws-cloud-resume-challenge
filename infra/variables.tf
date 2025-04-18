@@ -1,20 +1,6 @@
-variable "bucket_name" {
-    description = "Name of the bucket"
-    type = string
-}
-
-variable "domain_name" {
-    type = string
-}
-
-variable "lambda_handler" {
-    type = string
-}
-
-variable "function_name" {
-    type = string
-}
-
-variable "dynamodb_table_name" {
-    type = string
-}
+variable "bucket_name" {}
+variable "domain_name" {}
+variable "lambda_handler" {}
+variable "function_name" {}
+variable "dynamodb_table_name" {}
+variable "alternative_name" {}

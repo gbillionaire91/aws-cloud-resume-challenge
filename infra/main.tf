@@ -3,15 +3,6 @@ module "s3-bucket" {
   bucket_name = var.bucket_name
 }
 
-module "certificate" {
-  source                    = "../Modules/certificate"
-  providers = {
-    aws = aws.east
-  }
-  domain_name               = var.domain_name
-  # subject_alternative_names = [var.domain_name]
-}
-
 module "cloudfront" {
   source                        = "../Modules/cloudfront"
   providers = {
@@ -19,25 +10,22 @@ module "cloudfront" {
   }
   domain_name                   = var.domain_name
   cdn_domain_name_and_origin_id = module.s3-bucket.bucket_regional_domain_name
-  acm_certificate_arn           = module.certificate.cert_arn
+  certificate_arn               = module.route53.certificate_arn
   depends_on                    = [module.route53]
 }
 
 module "route53" {
-  source                    = "../Modules/route53"
+  source = "../Modules/route53"
   providers = {
     aws = aws.east
   }
-  domain_name               = var.domain_name
-  domain_validation_options = module.certificate.domain_validation_options
-  certificate_arn           = module.certificate.cert_arn
+  domain_name         = var.domain_name
+  alternative_name   = var.alternative_name
 }
 
 module "alias" {
   source                 = "../Modules/alias"
-  providers = {
-    aws = aws.east
-  }
+  
   domain_name            = var.domain_name
   cloudfront_domain_name = module.cloudfront.cloudfront_domain_name
   cloudfront_zone_id     = module.cloudfront.cloudfront_hosted_zone_id
