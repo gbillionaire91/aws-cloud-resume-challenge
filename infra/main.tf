@@ -37,7 +37,7 @@ module "alias" {
 module "lambda" {
   source          = "../Modules/lambda"
   domain_name     = var.domain_name
-  allowed_origins = ["https://${var.domain_name}", "https://www.${var.domain_name}", "https://resume.${var.domain_name}"]
+  allowed_origins = ["*"]
   lambda_handler  = var.lambda_handler
   function_name   = var.function_name
   dynamodb_arn    = module.dynamodb.dynamodb_arn

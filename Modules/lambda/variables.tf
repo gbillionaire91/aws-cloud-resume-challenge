@@ -21,4 +21,3 @@ variable "lambda_handler" {
 variable "dynamodb_arn" {
     type = string
 }
-

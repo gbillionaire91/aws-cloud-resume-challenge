@@ -51,6 +51,7 @@ resource "aws_iam_role" "iam_for_lambda" {
                 {
                     "Effect": "Allow",
                     "Action": [
+                        "dynamodb:PutItem",
                         "dynamodb:UpdateItem",
                         "dynamodb:GetItem"
                     ],
