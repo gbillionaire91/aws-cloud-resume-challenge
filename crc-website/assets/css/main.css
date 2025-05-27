@@ -1765,6 +1765,16 @@ input, select, textarea {
 				height: 48px;
 			}
 
+		.image.main {
+			width: 504px;
+			height: 791px;
+		}
+
+			.image.main img {
+				width: 504px;
+				height: 791px;
+			}
+
 		.image.fit {
 			display: block;
 			width: 100%;
