@@ -20,7 +20,7 @@ module "route53" {
     aws = aws.east
   }
   domain_name         = var.domain_name
-  alternative_name   = var.alternative_name
+  alternative_name    = var.alternative_name
 }
 
 module "alias" {

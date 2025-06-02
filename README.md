@@ -1,1 +1,1 @@
-This will be the README file
+This repository contains the Infrastructure as Code that defines the cloud resources used for gjackman.com
